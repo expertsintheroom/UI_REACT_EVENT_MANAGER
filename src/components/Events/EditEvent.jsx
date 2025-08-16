@@ -22,7 +22,7 @@ export default function EditEvent() {
   const { data, isError, error } = useQuery({
     queryKey: ['events', params.id],
     queryFn: ({ signal }) => fetchEvent({ signal, id: params.id }),
-    staleTime: 10000
+    staleTime: Infinity
   });
 
   // const { mutate } = useMutation({
@@ -100,6 +100,7 @@ export function loader({ params }) {
   return queryClient.fetchQuery({
     queryKey: ['events', params.id],
     queryFn: ({ signal }) => fetchEvent({ signal, id: params.id }),
+    staleTime: Infinity,
   });
 }
 
